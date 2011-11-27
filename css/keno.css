@@ -1,0 +1,53 @@
+body {
+  background: black;
+  color: #eee;
+}
+
+#game {
+  display: block;
+  width: 410px;
+  margin: 30px auto;
+}
+
+#game .slot {
+  display: block;
+  float: left;
+  position: relative;
+  width: 40px;
+  max-width: 40px;
+  height: 40px;
+  max-height: 40px;
+  color: #efef89;
+  background: #222;
+  text-align: center;
+  font-family: impact, arial, sans-serif;
+  font-size: 20px;
+  border: 1px solid #554;
+  margin: -1px 0 0 -1px;
+  z-index: 1;
+}
+
+.slot:hover {
+  color: white !important;
+  border-color: white !important;
+  z-index: 2 !important;
+  background: #333 !important;
+}
+
+.slot span {
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  margin: -5px auto;
+  border: 5px solid #222;
+  -moz-border-radius: 40px;
+  -webkit-border-radius: 40px;
+  border-radius: 40px;
+  border-color: #222;
+  border-color: rgba(34, 34, 34, 0);
+}
+
+.slot .spot {
+  border-color: white;
+}
+
