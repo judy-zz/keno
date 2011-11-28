@@ -9,7 +9,11 @@ window.game =
         "slot good-answer"
       else
         "slot bad-answer"
-    else "slot"
+    else
+      if spot
+        "slot spot"
+      else
+        "slot"
   spotClass: (spot) ->
     if spot then "spot" else ""
 

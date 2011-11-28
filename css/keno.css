@@ -17,12 +17,12 @@ body {
   max-width: 40px;
   height: 40px;
   max-height: 40px;
-  color: #efef89;
+  color: #444;
   background: #222;
   text-align: center;
   font-family: impact, arial, sans-serif;
   font-size: 20px;
-  border: 1px solid #554;
+  border: 1px solid #333;
   margin: -1px 0 0 -1px;
   z-index: 1;
 }
@@ -32,7 +32,7 @@ body {
 }
 
 .slot:hover {
-  color: white !important;
+  color: #efef89 !important;
   border-color: white !important;
   z-index: 2 !important;
   background: #333 !important;
@@ -49,6 +49,10 @@ body {
   border-radius: 40px;
   border-color: #222;
   border-color: rgba(34, 34, 34, 0);
+}
+
+.slot.spot{
+  color: #efef89 !important;
 }
 
 .slot .spot {
@@ -68,4 +72,5 @@ body {
 
 .slot.bad-answer .spot {
   border-color: #F00 !important;
+  content: "X";
 }

@@ -25,7 +25,11 @@
           return "slot bad-answer";
         }
       } else {
-        return "slot";
+        if (spot) {
+          return "slot spot";
+        } else {
+          return "slot";
+        }
       }
     },
     spotClass: function(spot) {
