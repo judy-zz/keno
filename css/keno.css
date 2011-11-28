@@ -1,3 +1,20 @@
+@-webkit-keyframes flashwhite {
+  0%   {background-color: #FFF;}
+  100% {background-color: #222;}
+}
+@-moz-keyframes flashwhite {
+  0%   {background-color: #FFF;}
+  100% {background-color: #222;}
+}
+@-ms-keyframes flashwhite {
+  0%   {background-color: #FFF;}
+  100% {background-color: #222;}
+}
+@keyframes flashwhite {
+  0%   {background-color: #FFF;}
+  100% {background-color: #222;}
+}
+
 body {
   background: black;
   color: #eee;
@@ -36,6 +53,18 @@ body {
   border-color: white !important;
   z-index: 2 !important;
   background: #333 !important;
+  -webkit-animation-name: flashwhite;
+  -webkit-animation-duration: 0.25s;
+  -webkit-animation-timing-function: ease-out;
+  -moz-animation-name: flashwhite;
+  -moz-animation-duration: 0.25s;
+  -moz-animation-timing-function: ease-out;
+  -ms-animation-name: flashwhite;
+  -ms-animation-duration: 0.25s;
+  -ms-animation-timing-function: ease-out;
+  animation-name: flashwhite;
+  animation-duration: 0.25s;
+  animation-timing-function: ease-out;
 }
 
 .slot span {
