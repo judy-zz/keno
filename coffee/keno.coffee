@@ -3,8 +3,13 @@ window.game =
     possible_slots = (slot for slot in window.game.grid when slot.answer != "answer")
     answer_num = Math.floor(Math.random() * (possible_slots.length + 1))
     $.observable(window.game.grid[possible_slots[answer_num].number - 1]).setProperty("answer", true)
-  slotClass: (answer) ->
-    if answer then "slot answer" else "slot"
+  slotClass: (answer, spot) ->
+    if answer
+      if spot 
+        "slot good-answer"
+      else
+        "slot bad-answer"
+    else "slot"
   spotClass: (spot) ->
     if spot then "spot" else ""
 

@@ -54,10 +54,18 @@ body {
 .slot .spot {
   border-color: white;
 }
-.slot.answer {
+
+.slot.good-answer {
   color: #0F0 !important;
 }
+.slot.bad-answer {
+  color: #F00 !important;
+}
 
-.slot.answer .spot {
+.slot.good-answer .spot {
   border-color: #0F0 !important;
+}
+
+.slot.bad-answer .spot {
+  border-color: #F00 !important;
 }

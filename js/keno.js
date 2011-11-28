@@ -17,9 +17,13 @@
       answer_num = Math.floor(Math.random() * (possible_slots.length + 1));
       return $.observable(window.game.grid[possible_slots[answer_num].number - 1]).setProperty("answer", true);
     },
-    slotClass: function(answer) {
+    slotClass: function(answer, spot) {
       if (answer) {
-        return "slot answer";
+        if (spot) {
+          return "slot good-answer";
+        } else {
+          return "slot bad-answer";
+        }
       } else {
         return "slot";
       }
