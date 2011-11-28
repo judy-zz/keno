@@ -22,4 +22,3 @@ $(document).ready ->
     .on "click", ".slot", (event) ->
       spotted = if window.game.grid[$(this).attr("number") - 1].spot == "spot" then "" else "spot"
       $.observable(window.game.grid[$(this).attr("number") - 1]).setProperty("spot", spotted)
-
