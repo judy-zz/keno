@@ -51,6 +51,10 @@ body {
   border-color: white;
 }
 .slot.answer {
-  color: green !important;
+  color: #0F0 !important;
+}
+
+.slot.answer .spot {
+  border-color: #0F0 !important;
 }
 

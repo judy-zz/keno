@@ -15,7 +15,7 @@
         return _results;
       })();
       answer_num = Math.floor(Math.random() * (possible_slots.length + 1));
-      return window.game.grid[possible_slots[answer_num].number - 1].answer = "answer";
+      return $.observable(window.game.grid[possible_slots[answer_num].number - 1]).setProperty("answer", true);
     },
     slotClass: function(answer) {
       if (answer) {
