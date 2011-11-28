@@ -17,9 +17,7 @@
     return $('#grid').link(window.grid, 'slotTemplate').on("click", ".slot", function(event) {
       var spotted;
       spotted = window.grid[$(this).attr("number") - 1].spot === "spot" ? "" : "spot";
-      window.grid[$(this).attr("number") - 1].spot = spotted;
-      console.log(window.grid[$(this).attr("number") - 1].spot);
-      return console.log(spotted);
+      return window.grid[$(this).attr("number") - 1].spot = spotted;
     });
   });
   ({

@@ -12,8 +12,6 @@ $(document).ready ->
     .on "click", ".slot", (event) ->
       spotted = if window.grid[$(this).attr("number") - 1].spot == "spot" then "" else "spot"
       window.grid[$(this).attr("number") - 1].spot = spotted
-      console.log window.grid[$(this).attr("number") - 1].spot
-      console.log spotted
 
   # $('.slot').click ->
   #   $(this).children().toggleClass("spot")
