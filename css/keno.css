@@ -50,4 +50,7 @@ body {
 .slot .spot {
   border-color: white;
 }
+.slot.answer {
+  color: green !important;
+}
 

@@ -12,7 +12,6 @@
 </head>
 <body>
 
-
   <section id="game">
     <h1>keno!</h1>
     <div id="grid"></div>
@@ -20,10 +19,16 @@
   </section>
 
   <script id="slotTemplate" type="text/x-jquery-tmpl">
-    <button number="{{=txt}}" class="slot {{=answer}}" value="{{=txt}}"><span class="{{=spot}}">&nbsp;</span>{{=txt}}</button>
+    <button
+      number="{{=number}}"
+      class="slot {{=answer}}"
+      data-getfrom="class:window.game.slotClass([answer])"
+      >
+      <span class="" data-getfrom="class:window.game.spotClass([spot])">&nbsp;</span>
+
+      {{=number}}
+    </button>
   </script>
-
-
 
 </body>
 </html>

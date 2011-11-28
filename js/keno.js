@@ -15,7 +15,21 @@
         return _results;
       })();
       answer_num = Math.floor(Math.random() * (possible_slots.length + 1));
-      return window.game.grid[possible_slots[answer_num].txt - 1].answer = "answer";
+      return window.game.grid[possible_slots[answer_num].number - 1].answer = "answer";
+    },
+    slotClass: function(answer) {
+      if (answer) {
+        return "slot answer";
+      } else {
+        return "slot";
+      }
+    },
+    spotClass: function(spot) {
+      if (spot) {
+        return "spot";
+      } else {
+        return "";
+      }
     }
   };
   $(document).ready(function() {
@@ -25,9 +39,9 @@
       _results = [];
       for (num = 1; num <= 80; num++) {
         _results.push(slot = {
-          txt: num,
-          spot: "",
-          answer: ""
+          number: num,
+          spot: false,
+          answer: false
         });
       }
       return _results;
@@ -36,7 +50,7 @@
     return $('#grid').link(window.game.grid, 'slotTemplate').on("click", ".slot", function(event) {
       var spotted;
       spotted = window.game.grid[$(this).attr("number") - 1].spot === "spot" ? "" : "spot";
-      return window.game.grid[$(this).attr("number") - 1].spot = spotted;
+      return $.observable(window.game.grid[$(this).attr("number") - 1]).setProperty("spot", spotted);
     });
   });
 }).call(this);
