@@ -27,6 +27,10 @@ body {
   z-index: 1;
 }
 
+#game button {
+  margin-top: 2em;
+}
+
 .slot:hover {
   color: white !important;
   border-color: white !important;
@@ -57,4 +61,3 @@ body {
 .slot.answer .spot {
   border-color: #0F0 !important;
 }
-
