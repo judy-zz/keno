@@ -5,9 +5,11 @@
   <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
   <link rel="stylesheet" href="css/keno.css">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.2.2/underscore-min.js"></script>
   <script type="text/javascript" src="js/jsviews/jsrender.js"></script>
   <script type="text/javascript" src="js/jsviews/jquery.observable.js"></script>
   <script type="text/javascript" src="js/jsviews/jquery.views.js"></script>
+  <script type="text/javascript" src="js/state-machine.min.js"></script>
   <script type="text/javascript" src="js/keno.js"></script>
 </head>
 <body>
@@ -16,8 +18,7 @@
     <h1>keno!</h1>
     <div id="grid"></div>
     <div id="interaction-pane">
-
-    <button onClick="window.game.generateAnswer()" class="btn large primary">Generate an Answer</button>
+      <button onClick="window.game.machine.play()" class="btn large primary">Play!</button>
     </div>
   </section>
 

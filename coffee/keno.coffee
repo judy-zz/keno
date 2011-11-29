@@ -1,8 +1,25 @@
+Array::shuffle = -> @sort -> 0.5 - Math.random()
+
 window.game =
-  generateAnswer: ->
+  fixedAnswers: ->
+   [1, 12, 29, 42, 57, 68]
+  generateRandomAnswer: ->
     possible_slots = (slot for slot in window.game.grid when slot.answer != "answer")
-    answer_num = Math.floor(Math.random() * (possible_slots.length + 1))
-    $.observable(window.game.grid[possible_slots[answer_num].number - 1]).setProperty("answer", true)
+    answer_num = Math.floor(Math.random() * (possible_slots.length))
+    window.game.displayAnswer(answer_num)
+  generateAnswers: ->
+    @answers ?= window.game.fixedAnswers()
+    while @answers.length < 20
+      possible_answers = (number for number in [1..80] when number not in @answers)
+      answer_num = Math.floor(Math.random() * (possible_answers.length))
+      @answers.push possible_answers[answer_num]
+    @answers = @answers.shuffle()
+  displayAnswers: ->
+    window.game.displayAnswer answer for answer in @answers
+  displayAnswer: (number) ->
+    $.observable(window.game.grid[number - 1]).setProperty("answer", true)
+  displayWinnerMessage: ->
+    alert("You won!")
   slotClass: (answer, spot) ->
     if answer
       if spot 
@@ -16,6 +33,41 @@ window.game =
         "slot"
   spotClass: (spot) ->
     if spot then "spot" else ""
+  totalSpots: ->
+    # should return total number of spots
+    (slot for slot in window.game.grid when slot.spot == "spot").length
+  machine: StateMachine.create {
+    initial: 'betting'
+    events:
+      [
+        { name: 'play', from: 'betting', to: 'playing' }
+        { name: 'win',  from: 'playing', to: 'collection' }
+      ]
+    callbacks:
+      onbeforeplay: ->
+        if window.game.totalSpots() != 6
+          alert("Please select exactly 6 spots.")
+          return false
+      onplaying: ->
+        window.game.generateAnswers()
+        window.game.displayAnswers()
+      oncollection: ->
+        # set cookie
+        window.game.displayWinnerMessage()
+        
+      # onentermenu: -> $('#menu').show()
+      # onentergame: -> $('#game').show()
+      # onleavemenu: ->
+      #   $('#menu').fadeOut 'fast', ->
+      #     fsm.transition()
+      #   return false
+
+      # onleavegame: ->
+      #   $('#game').slideDown 'slow', ->
+      #     fsm.transition()
+      #   return false
+  }
+
 
 $(document).ready ->
   window.game.grid = for num in [1..80]
@@ -26,6 +78,9 @@ $(document).ready ->
   
   $("#slotTemplate").template("slotTemplate")
   
+  # IF GAME HAS ALREADY BEEN PLAYED VIA COOKIE
+  #   window.game.displayWinnerMessage()
+
   $('#grid')
     .link(window.game.grid, 'slotTemplate')
     .on "click", ".slot", (event) ->
