@@ -21,13 +21,37 @@ body {
 }
 
 #game {
-  
+  width: 782px;
+  height: 587px;
+  background: url(/img/bg.jpg);
+  margin: 10px auto;
+  text-align: center;
+  position: relative;
+}
+
+#instructions, #how-to-play {
+  position: absolute;
+  width: 119px;
+  height: 278px;
+  padding: 10px 10px 30px;
+  top: 92px;
+  overflow: hidden;
+}
+
+#instructions {
+  left: 25px;
+}
+
+#how-to-play {
+  left: 618px;
 }
 
 #grid {
   display: block;
-  width: 410px;
-  margin: 30px auto;
+  position: absolute;
+  top: 122px;
+  left: 196px;
+  width: 390px;
 }
 
 #grid .slot {
@@ -46,10 +70,6 @@ body {
   border: 1px solid #333;
   margin: -1px 0 0 -1px;
   z-index: 1;
-}
-
-#game button {
-  margin-top: 2em;
 }
 
 #grid.active .slot:hover {
@@ -115,6 +135,9 @@ body {
   width:  214px;
   text-indent: -9999px;
   cursor: default;
+  position: absolute;
+  top: 452px;
+  left: 282px;
 }
 #play-button.active {
   background-position: 0 -94px;
