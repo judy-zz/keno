@@ -152,10 +152,20 @@
       return _results;
     })();
     $("#slotTemplate").template("slotTemplate");
-    return $('#grid').link(window.game.grid, 'slotTemplate').on("click", ".slot", function(event) {
+    $('#grid').link(window.game.grid, 'slotTemplate').on("click", ".slot", function(event) {
       var spotted;
       spotted = window.game.grid[$(this).attr("number") - 1].spot === "spot" ? "" : "spot";
-      return $.observable(window.game.grid[$(this).attr("number") - 1]).setProperty("spot", spotted);
+      $.observable(window.game.grid[$(this).attr("number") - 1]).setProperty("spot", spotted);
+      if (window.game.totalSpots() === 6) {
+        return $('#play-button').addClass('active');
+      } else {
+        return $('#play-button').removeClass('active');
+      }
+    });
+    return $('#play-button').on("click", function(event) {
+      if (window.game.totalSpots() === 6) {
+        return window.game.machine.play();
+      }
     });
   });
 }).call(this);

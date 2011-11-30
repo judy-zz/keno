@@ -103,3 +103,17 @@ body {
   border-color: #F00 !important;
   content: "X";
 }
+
+#play-button {
+  border: none;
+  background: url("/img/play.png");
+  height: 94px;
+  width:  214px;
+  text-indent: -9999px;
+}
+#play-button.active {
+  background-position: 0 -94px;
+}
+#play-button.active:hover {
+  background-position: 0 -188px;
+}

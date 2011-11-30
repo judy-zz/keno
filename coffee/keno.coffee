@@ -87,3 +87,12 @@ $(document).ready ->
       
       spotted = if window.game.grid[$(this).attr("number") - 1].spot == "spot" then "" else "spot"
       $.observable(window.game.grid[$(this).attr("number") - 1]).setProperty("spot", spotted)
+      if window.game.totalSpots() == 6
+        $('#play-button').addClass('active')
+      else
+        $('#play-button').removeClass('active')
+  
+  $('#play-button')
+    .on "click", (event) ->
+      if window.game.totalSpots() == 6
+        window.game.machine.play()
