@@ -15,7 +15,7 @@ window.game =
   displayAnswer: (number) ->
     $.observable(window.game.grid[number - 1]).setProperty("answer", true)
   displayWinnerMessage: ->
-    alert("You won!")
+    $('#winning-screen').css('z-index', '2').fadeIn()
   slotClass: (answer, spot) ->
     if answer
       if spot 
@@ -55,6 +55,7 @@ window.game =
   }
 
 $(document).ready ->
+
   window.game.grid = for num in [1..80]
     slot =
       number: num
@@ -65,6 +66,7 @@ $(document).ready ->
   
   # IF GAME HAS ALREADY BEEN PLAYED VIA COOKIE
   #   window.game.machine.win()
+  # else
 
   $('#grid')
     .link(window.game.grid, 'slotTemplate')
@@ -81,3 +83,9 @@ $(document).ready ->
     .on "click", (event) ->
       if window.game.totalSpots() == 6
         window.game.machine.play()
+
+  $('#game').fadeIn(2000)
+
+  
+
+  

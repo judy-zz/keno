@@ -27,6 +27,7 @@ body {
   margin: 10px auto;
   text-align: center;
   position: relative;
+  display: none;
 }
 
 #instructions, #how-to-play {
@@ -44,6 +45,20 @@ body {
 
 #how-to-play {
   left: 618px;
+}
+
+#winning-screen {
+  color: white;
+  height: 300px;
+  width: 400px;
+  position: absolute;
+  top: 123px;
+  left: 185px;
+  background: black;
+  border: 5px dashed steelblue;
+  z-index: 0;
+  text-decoration: italic;
+  display: none;
 }
 
 #grid {

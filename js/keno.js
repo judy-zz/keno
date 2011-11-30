@@ -51,7 +51,7 @@
       return $.observable(window.game.grid[number - 1]).setProperty("answer", true);
     },
     displayWinnerMessage: function() {
-      return alert("You won!");
+      return $('#winning-screen').css('z-index', '2').fadeIn();
     },
     slotClass: function(answer, spot) {
       if (answer) {
@@ -150,10 +150,11 @@
         }
       }
     });
-    return $('#play-button').on("click", function(event) {
+    $('#play-button').on("click", function(event) {
       if (window.game.totalSpots() === 6) {
         return window.game.machine.play();
       }
     });
+    return $('#game').fadeIn(3000);
   });
 }).call(this);
