@@ -118,6 +118,7 @@
           return window.game.machine.win();
         },
         oncollection: function() {
+          $('grid').addClass('winning');
           return window.game.displayWinnerMessage();
         }
       }

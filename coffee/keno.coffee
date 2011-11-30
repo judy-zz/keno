@@ -51,6 +51,7 @@ window.game =
         window.game.machine.win()
       oncollection: ->
         # set cookie
+        $('grid').addClass('winning')
         window.game.displayWinnerMessage()
   }
 
