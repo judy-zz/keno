@@ -3,10 +3,6 @@ Array::shuffle = -> @sort -> 0.5 - Math.random()
 window.game =
   fixedAnswers: ->
    [1, 12, 29, 42, 57, 68]
-  generateRandomAnswer: ->
-    possible_slots = (slot for slot in window.game.grid when slot.answer != "answer")
-    answer_num = Math.floor(Math.random() * (possible_slots.length))
-    window.game.displayAnswer(answer_num)
   generateAnswers: ->
     @answers ?= window.game.fixedAnswers()
     while @answers.length < 20
@@ -48,13 +44,13 @@ window.game =
           alert("Please select exactly 6 spots.")
           return false
       onplaying: ->
+        $('#play-button').removeClass('active').fadeOut()
         window.game.generateAnswers()
         window.game.displayAnswers()
       oncollection: ->
         # set cookie
         window.game.displayWinnerMessage()
   }
-
 
 $(document).ready ->
   window.game.grid = for num in [1..80]
@@ -71,7 +67,6 @@ $(document).ready ->
   $('#grid')
     .link(window.game.grid, 'slotTemplate')
     .on "click", ".slot", (event) ->
-      
       spotted = if window.game.grid[$(this).attr("number") - 1].spot == "spot" then "" else "spot"
       $.observable(window.game.grid[$(this).attr("number") - 1]).setProperty("spot", spotted)
       if window.game.totalSpots() == 6

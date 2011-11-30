@@ -14,23 +14,6 @@
     fixedAnswers: function() {
       return [1, 12, 29, 42, 57, 68];
     },
-    generateRandomAnswer: function() {
-      var answer_num, possible_slots, slot;
-      possible_slots = (function() {
-        var _i, _len, _ref, _results;
-        _ref = window.game.grid;
-        _results = [];
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          slot = _ref[_i];
-          if (slot.answer !== "answer") {
-            _results.push(slot);
-          }
-        }
-        return _results;
-      })();
-      answer_num = Math.floor(Math.random() * possible_slots.length);
-      return window.game.displayAnswer(answer_num);
-    },
     generateAnswers: function() {
       var answer_num, number, possible_answers, _ref;
             if ((_ref = this.answers) != null) {
@@ -128,6 +111,7 @@
           }
         },
         onplaying: function() {
+          $('#play-button').removeClass('active').fadeOut();
           window.game.generateAnswers();
           return window.game.displayAnswers();
         },
