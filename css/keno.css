@@ -1,18 +1,18 @@
 @-webkit-keyframes flashwhite {
   0%   {background-color: #FFF;}
-  100% {background-color: #222;}
+  100% {background-color: #333;}
 }
 @-moz-keyframes flashwhite {
   0%   {background-color: #FFF;}
-  100% {background-color: #222;}
+  100% {background-color: #333;}
 }
 @-ms-keyframes flashwhite {
   0%   {background-color: #FFF;}
-  100% {background-color: #222;}
+  100% {background-color: #333;}
 }
 @keyframes flashwhite {
   0%   {background-color: #FFF;}
-  100% {background-color: #222;}
+  100% {background-color: #333;}
 }
 
 body {
@@ -52,7 +52,7 @@ body {
   margin-top: 2em;
 }
 
-.slot:hover {
+#grid.active .slot:hover {
   color: #efef89 !important;
   border-color: white !important;
   z-index: 2 !important;
@@ -114,9 +114,11 @@ body {
   height: 94px;
   width:  214px;
   text-indent: -9999px;
+  cursor: default;
 }
 #play-button.active {
   background-position: 0 -94px;
+  cursor: pointer !important;
 }
 #play-button.active:hover {
   background-position: 0 -188px;

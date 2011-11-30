@@ -112,8 +112,10 @@
         },
         onplaying: function() {
           $('#play-button').removeClass('active').fadeOut();
+          $('#grid').removeClass('active');
           window.game.generateAnswers();
-          return window.game.displayAnswers();
+          window.game.displayAnswers();
+          return window.game.machine.win();
         },
         oncollection: function() {
           return window.game.displayWinnerMessage();
@@ -138,12 +140,14 @@
     $("#slotTemplate").template("slotTemplate");
     $('#grid').link(window.game.grid, 'slotTemplate').on("click", ".slot", function(event) {
       var spotted;
-      spotted = window.game.grid[$(this).attr("number") - 1].spot === "spot" ? "" : "spot";
-      $.observable(window.game.grid[$(this).attr("number") - 1]).setProperty("spot", spotted);
-      if (window.game.totalSpots() === 6) {
-        return $('#play-button').addClass('active');
-      } else {
-        return $('#play-button').removeClass('active');
+      if (window.game.machine.is("betting")) {
+        spotted = window.game.grid[$(this).attr("number") - 1].spot === "spot" ? "" : "spot";
+        $.observable(window.game.grid[$(this).attr("number") - 1]).setProperty("spot", spotted);
+        if (window.game.totalSpots() === 6) {
+          return $('#play-button').addClass('active');
+        } else {
+          return $('#play-button').removeClass('active');
+        }
       }
     });
     return $('#play-button').on("click", function(event) {

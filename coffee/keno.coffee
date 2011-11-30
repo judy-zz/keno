@@ -45,8 +45,10 @@ window.game =
           return false
       onplaying: ->
         $('#play-button').removeClass('active').fadeOut()
+        $('#grid').removeClass('active')
         window.game.generateAnswers()
         window.game.displayAnswers()
+        window.game.machine.win()
       oncollection: ->
         # set cookie
         window.game.displayWinnerMessage()
@@ -67,12 +69,13 @@ $(document).ready ->
   $('#grid')
     .link(window.game.grid, 'slotTemplate')
     .on "click", ".slot", (event) ->
-      spotted = if window.game.grid[$(this).attr("number") - 1].spot == "spot" then "" else "spot"
-      $.observable(window.game.grid[$(this).attr("number") - 1]).setProperty("spot", spotted)
-      if window.game.totalSpots() == 6
-        $('#play-button').addClass('active')
-      else
-        $('#play-button').removeClass('active')
+      if window.game.machine.is("betting")
+        spotted = if window.game.grid[$(this).attr("number") - 1].spot == "spot" then "" else "spot"
+        $.observable(window.game.grid[$(this).attr("number") - 1]).setProperty("spot", spotted)
+        if window.game.totalSpots() == 6
+          $('#play-button').addClass('active')
+        else
+          $('#play-button').removeClass('active')
   
   $('#play-button')
     .on "click", (event) ->
