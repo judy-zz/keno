@@ -34,7 +34,6 @@ window.game =
   spotClass: (spot) ->
     if spot then "spot" else ""
   totalSpots: ->
-    # should return total number of spots
     (slot for slot in window.game.grid when slot.spot == "spot").length
   machine: StateMachine.create {
     initial: 'betting'
@@ -54,18 +53,6 @@ window.game =
       oncollection: ->
         # set cookie
         window.game.displayWinnerMessage()
-        
-      # onentermenu: -> $('#menu').show()
-      # onentergame: -> $('#game').show()
-      # onleavemenu: ->
-      #   $('#menu').fadeOut 'fast', ->
-      #     fsm.transition()
-      #   return false
-
-      # onleavegame: ->
-      #   $('#game').slideDown 'slow', ->
-      #     fsm.transition()
-      #   return false
   }
 
 
@@ -79,7 +66,7 @@ $(document).ready ->
   $("#slotTemplate").template("slotTemplate")
   
   # IF GAME HAS ALREADY BEEN PLAYED VIA COOKIE
-  #   window.game.displayWinnerMessage()
+  #   window.game.machine.win()
 
   $('#grid')
     .link(window.game.grid, 'slotTemplate')
