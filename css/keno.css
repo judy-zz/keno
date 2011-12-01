@@ -1,40 +1,16 @@
-@-webkit-keyframes flashwhite {
-  0%   {background-color: #FFF;}
-  100% {background-color: #333;}
-}
-@-moz-keyframes flashwhite {
-  0%   {background-color: #FFF;}
-  100% {background-color: #333;}
-}
-@-ms-keyframes flashwhite {
-  0%   {background-color: #FFF;}
-  100% {background-color: #333;}
-}
-@keyframes flashwhite {
-  0%   {background-color: #FFF;}
-  100% {background-color: #333;}
-}
-@keyframes flashgreen {
-  0%   {border-color: black !important;}
-  50%  {border-color: green !important;}
-  100% {border-color: black !important;}
-}
-
 body {
   background: black;
   color: #eee;
 }
-
 #game {
   width: 782px;
   height: 587px;
-  background: url(/img/bg.jpg);
+  background: url('../img/bg.jpg');
   margin: 10px auto;
   text-align: center;
   position: relative;
   display: none;
 }
-
 #instructions, #how-to-play {
   position: absolute;
   width: 119px;
@@ -43,15 +19,12 @@ body {
   top: 92px;
   overflow: hidden;
 }
-
 #instructions {
   left: 25px;
 }
-
 #how-to-play {
   left: 618px;
 }
-
 #winning-screen {
   color: white;
   height: 300px;
@@ -65,109 +38,69 @@ body {
   text-decoration: italic;
   display: none;
 }
-
-#grid.winning {
-  border: 1px solid green;
-  -webkit-animation-name: flashgreen;
-  -webkit-animation-duration: 0.3s;
-  -webkit-animation-iteration-count: infinite;
-  -moz-animation-name: flashgreen;
-  -moz-animation-duration: 0.3s;
-  -moz-animation-iteration-count: infinite;
-  -ms-animation-name: flashgreen;
-  -ms-animation-duration: 0.3s;
-  -ms-animation-iteration-count: infinite;
-  animation-name: flashgreen;
-  animation-duration: 0.3s;
-  animation-iteration-count: infinite;
-}
-
 #grid {
   display: block;
   position: absolute;
   top: 122px;
   left: 196px;
   width: 390px;
-  border: 1px solid black;
 }
-
 #grid .slot {
   display: block;
   float: left;
   position: relative;
-  width: 40px;
-  max-width: 40px;
-  height: 40px;
-  max-height: 40px;
-  color: #444;
-  background: #222;
+  background: url('../img/slot.png');
+  width: 39px;
+  max-width: 39px;
+  height: 39px;
+  max-height: 39px;
+  color: white;
   text-align: center;
   font-family: impact, arial, sans-serif;
   font-size: 20px;
-  border: 1px solid #333;
-  margin: -1px 0 0 -1px;
+  margin: 0;
   z-index: 1;
+  overflow: hidden;
+  border: none;
 }
-
 #grid.active .slot:hover {
-  color: #efef89 !important;
-  border-color: white !important;
+  background-position: 0 -39px;
   z-index: 2 !important;
-  background: #333 !important;
-  -webkit-animation-name: flashwhite;
-  -webkit-animation-duration: 0.25s;
-  -webkit-animation-timing-function: ease-out;
-  -moz-animation-name: flashwhite;
-  -moz-animation-duration: 0.25s;
-  -moz-animation-timing-function: ease-out;
-  -ms-animation-name: flashwhite;
-  -ms-animation-duration: 0.25s;
-  -ms-animation-timing-function: ease-out;
-  animation-name: flashwhite;
-  animation-duration: 0.25s;
-  animation-timing-function: ease-out;
 }
-
 .slot span {
   position: absolute;
   height: 26px;
   width: 26px;
-  margin: -5px auto;
+  top: 1px;
+  left: 1px;
   border: 5px solid #222;
-  -moz-border-radius: 40px;
   -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
   border-radius: 40px;
-  border-color: #222;
   border-color: rgba(34, 34, 34, 0);
 }
-
 .slot.spot{
   color: #efef89 !important;
 }
-
 .slot .spot {
   border-color: white;
 }
-
 .slot.good-answer {
   color: #0F0 !important;
 }
 .slot.bad-answer {
   color: #F00 !important;
 }
-
 .slot.good-answer .spot {
   border-color: #0F0 !important;
 }
-
 .slot.bad-answer .spot {
   border-color: #F00 !important;
   content: "X";
 }
-
 #play-button {
   border: none;
-  background: url("/img/play.png");
+  background: url('../img/play.png');
   height: 94px;
   width:  214px;
   text-indent: -9999px;

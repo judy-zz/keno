@@ -38,14 +38,14 @@
       return this.answers = this.answers.shuffle();
     },
     displayAnswers: function() {
-      var answer, _i, _len, _ref, _results;
-      _ref = this.answers;
-      _results = [];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        answer = _ref[_i];
-        _results.push(window.game.displayAnswer(answer));
-      }
-      return _results;
+      $.each(this.answers, function(i, answer) {
+        return setTimeout((function() {
+          return window.game.displayAnswer(answer);
+        }), 300 * i);
+      });
+      return setTimeout((function() {
+        return window.game.machine.win();
+      }), 6000);
     },
     displayAnswer: function(number) {
       return $.observable(window.game.grid[number - 1]).setProperty("answer", true);
@@ -114,11 +114,11 @@
           $('#play-button').removeClass('active').fadeOut();
           $('#grid').removeClass('active');
           window.game.generateAnswers();
-          window.game.displayAnswers();
-          return window.game.machine.win();
+          return window.game.displayAnswers();
         },
         oncollection: function() {
-          $('grid').addClass('winning');
+          $('#game').addClass('winning');
+          $('#grid').addClass('winning');
           return window.game.displayWinnerMessage();
         }
       }

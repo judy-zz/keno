@@ -11,7 +11,9 @@ window.game =
       @answers.push possible_answers[answer_num]
     @answers = @answers.shuffle()
   displayAnswers: ->
-    window.game.displayAnswer answer for answer in @answers
+    $.each @answers, (i, answer) ->
+      setTimeout (-> window.game.displayAnswer(answer)), 300 * i
+    setTimeout (-> window.game.machine.win()), 6000 # 300 * 20 answers
   displayAnswer: (number) ->
     $.observable(window.game.grid[number - 1]).setProperty("answer", true)
   displayWinnerMessage: ->
@@ -48,10 +50,10 @@ window.game =
         $('#grid').removeClass('active')
         window.game.generateAnswers()
         window.game.displayAnswers()
-        window.game.machine.win()
       oncollection: ->
         # set cookie
-        $('grid').addClass('winning')
+        $('#game').addClass('winning')
+        $('#grid').addClass('winning')
         window.game.displayWinnerMessage()
   }
 
