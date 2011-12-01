@@ -17,7 +17,7 @@ window.game =
   displayAnswer: (number) ->
     $.observable(window.game.grid[number - 1]).setProperty("answer", true)
   displayWinnerMessage: ->
-    $('#winning-screen').css('z-index', '2').delay(2000).fadeIn()
+    $('#winning-screen').css('z-index', '2').delay(1000).fadeIn()
   slotClass: (answer, spot) ->
     if answer
       if spot 

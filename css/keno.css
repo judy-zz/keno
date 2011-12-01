@@ -26,17 +26,26 @@ body {
   left: 618px;
 }
 #winning-screen {
-  color: white;
+  position: absolute;
+  width: 782px;
+  height: 587px;
+  z-index: 0;
+  text-decoration: italic;
+  display: none;
+  background: black;
+  background: rgba(0, 0, 0, 0.8);
+}
+#winning-screen a img {
   height: 300px;
   width: 400px;
   position: absolute;
   top: 123px;
   left: 185px;
-  background: black;
-  border: 5px dashed steelblue;
-  z-index: 0;
-  text-decoration: italic;
-  display: none;
+  display: block;
+  -moz-box-shadow: 0 0 100px black, 0 0 100px black, 0 0 100px black;
+  -webkit-box-shadow: 0 0 100px black, 0 0 100px black, 0 0 100px black;
+  box-shadow: 0 0 100px black, 0 0 100px black, 0 0 100px black;
+  border: 1px solid black;
 }
 #grid {
   display: block;

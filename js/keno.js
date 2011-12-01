@@ -51,7 +51,7 @@
       return $.observable(window.game.grid[number - 1]).setProperty("answer", true);
     },
     displayWinnerMessage: function() {
-      return $('#winning-screen').css('z-index', '2').delay(2000).fadeIn();
+      return $('#winning-screen').css('z-index', '2').delay(1000).fadeIn();
     },
     slotClass: function(answer, spot) {
       if (answer) {
