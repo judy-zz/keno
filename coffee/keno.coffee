@@ -2,13 +2,9 @@ Array::shuffle = -> @sort -> 0.5 - Math.random()
 
 window.game =
   fixedAnswers: ->
-   [1, 12, 29, 42, 57, 68];
+   [1, 12, 29, 42, 57, 68]
   generateAnswers: ->
-    @answers ?= window.game.fixedAnswers()
-    while @answers.length < 20
-      possible_answers = (number for number in [1..80] when number not in @answers)
-      answer_num = Math.floor(Math.random() * (possible_answers.length))
-      @answers.push possible_answers[answer_num]
+    @answers = [2,5,12,16,19,21,29,31,37,38,42,44,45,50,52,65,69,71,78,80]
     @answers = @answers.shuffle()
   displayAnswers: ->
     $.each @answers, (i, answer) ->

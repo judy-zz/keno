@@ -15,26 +15,7 @@
       return [1, 12, 29, 42, 57, 68];
     },
     generateAnswers: function() {
-      var answer_num, number, possible_answers, _ref;
-            if ((_ref = this.answers) != null) {
-        _ref;
-      } else {
-        this.answers = window.game.fixedAnswers();
-      };
-      while (this.answers.length < 20) {
-        possible_answers = (function() {
-          var _results;
-          _results = [];
-          for (number = 1; number <= 80; number++) {
-            if (__indexOf.call(this.answers, number) < 0) {
-              _results.push(number);
-            }
-          }
-          return _results;
-        }).call(this);
-        answer_num = Math.floor(Math.random() * possible_answers.length);
-        this.answers.push(possible_answers[answer_num]);
-      }
+      this.answers = [2, 5, 12, 16, 19, 21, 29, 31, 37, 38, 42, 44, 45, 50, 52, 65, 69, 71, 78, 80];
       return this.answers = this.answers.shuffle();
     },
     displayAnswers: function() {
