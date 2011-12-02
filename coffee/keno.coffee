@@ -2,7 +2,8 @@ Array::shuffle = -> @sort -> 0.5 - Math.random()
 
 window.game =
   fixedAnswers: ->
-   [1, 12, 29, 42, 57, 68]
+   # [1, 12, 29, 41, 45, 38] 
+   [1, 12, 29, 42, 57, 68];
   generateAnswers: ->
     @answers ?= window.game.fixedAnswers()
     while @answers.length < 20
@@ -17,6 +18,7 @@ window.game =
   displayAnswer: (number) ->
     $.observable(window.game.grid[number - 1]).setProperty("answer", true)
   displayWinnerMessage: ->
+    $('#sound').html("<embed src='/clients/keno/snd/slot_payoff.wav' hidden=true autostart=true loop=false>")
     $('#winning-screen').css('z-index', '2').delay(1000).fadeIn()
   slotClass: (answer, spot) ->
     if answer
@@ -46,6 +48,7 @@ window.game =
           alert("Please select exactly 6 spots.")
           return false
       onplaying: ->
+        $('#sound').html("<embed src='/clients/keno/snd/button_click.wav' hidden=true autostart=true loop=false>")
         $('#play-button').removeClass('active').fadeOut()
         $('#grid').removeClass('active')
         window.game.generateAnswers()
@@ -85,10 +88,8 @@ $(document).ready ->
   $('#play-button')
     .on "click", (event) ->
       if window.game.totalSpots() == 6
+        $('#sound').html("<embed src='/clients/keno/snd/button_click.wav' hidden=true autostart=true loop=false>")
         window.game.machine.play()
 
+  $('#sound').html("<embed src='/clients/keno/openingsound.wav' hidden=true autostart=true loop=false>")
   $('#game').fadeIn(2000)
-
-  
-
-  

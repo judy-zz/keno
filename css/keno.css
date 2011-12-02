@@ -25,6 +25,14 @@ body {
 #how-to-play {
   left: 618px;
 }
+#how-to-play ul {
+  list-style:none;
+  margin:10px;
+  color: white;
+}
+#how-to-play ul li {
+  color: white;
+}
 #winning-screen {
   position: absolute;
   width: 782px;
@@ -125,3 +133,11 @@ body {
 #play-button.active:hover {
   background-position: 0 -188px;
 }
+#disclaimer {
+  display: block;
+  text-align: center;
+  width: 700px;
+  margin: 0 auto;
+  color: #999;
+}
+

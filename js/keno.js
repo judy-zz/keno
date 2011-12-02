@@ -51,6 +51,7 @@
       return $.observable(window.game.grid[number - 1]).setProperty("answer", true);
     },
     displayWinnerMessage: function() {
+      $('#sound').html("<embed src='/clients/keno/slot_payoff.wav' hidden=true autostart=true loop=false>");
       return $('#winning-screen').css('z-index', '2').delay(1000).fadeIn();
     },
     slotClass: function(answer, spot) {
@@ -153,6 +154,7 @@
     });
     $('#play-button').on("click", function(event) {
       if (window.game.totalSpots() === 6) {
+        $('#sound').html("<embed src='/clients/keno/button-click.wav' hidden=true autostart=true loop=false>");
         return window.game.machine.play();
       }
     });

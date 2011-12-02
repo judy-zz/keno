@@ -15,23 +15,22 @@
 
   <section id="game">
     <div id="instructions">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      <p>
+        Click the 6 numbers that are on your scratch off, and then click the "Play" button
+        to see if you're a winner!
       </p>
     </div>
     <div id="grid" class="active"></div>
     <div id="how-to-play">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
+      <p>Get the following number of matches and win the corresponding payout.</p>
+      <ul>
+        <li>1 = $19 credit</li>
+        <li>2 = $38 credit</li>
+        <li>3 = $57 credit</li>
+        <li>4 = $76 credit</li>
+        <li>5 = $95 credit</li>
+        <li>6 = $114 credit</li>
+      </ul>
     </div>
     <div id="interaction-pane">
       <button id="play-button">Play!</button>
@@ -53,5 +52,14 @@
     </button>
   </script>
 
+  <aside id="disclaimer">
+    This game is a promotion by A1AFastCash.com ending 12/31/11.  All winnings are in the
+    form of an account credit toward interest fees taken on any new loans from 12/1-12/31.
+  </aside>
+  <div id="sound">
+    <embed src='/clients/keno/openingsound.wav' hidden=true autostart=false loop=false>
+    <embed src='/clients/keno/button_click.wav' hidden=true autostart=false loop=false>
+    <embed src='/clients/keno/slot_payoff.wav'  hidden=true autostart=false loop=false>
+  </div>
 </body>
 </html>
