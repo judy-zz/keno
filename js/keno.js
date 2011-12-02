@@ -51,8 +51,35 @@
       return $.observable(window.game.grid[number - 1]).setProperty("answer", true);
     },
     displayWinnerMessage: function() {
-      $('#sound').html("<embed src='/clients/keno/slot_payoff.wav' hidden=true autostart=true loop=false>");
+      $('#sound').html("<embed src='snd/slot_payoff.wav' hidden=true autostart=true loop=false>");
       return $('#winning-screen').css('z-index', '2').delay(1000).fadeIn();
+    },
+    pickedSpots: function() {
+      var slot, _i, _len, _ref, _results;
+      _ref = window.game.grid;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        slot = _ref[_i];
+        if (slot.spot === "spot") {
+          _results.push(slot.number);
+        }
+      }
+      return _results;
+    },
+    activePlayButton: function() {
+      var number;
+      return window.game.totalSpots() === 6 && ((function() {
+        var _i, _len, _ref, _results;
+        _ref = window.game.pickedSpots();
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          number = _ref[_i];
+          if (__indexOf.call(window.game.fixedAnswers(), number) >= 0) {
+            _results.push(number);
+          }
+        }
+        return _results;
+      })()).length === 6;
     },
     slotClass: function(answer, spot) {
       if (answer) {
@@ -112,6 +139,7 @@
           }
         },
         onplaying: function() {
+          $('#sound').html("<embed src='snd/button_click.wav' hidden=true autostart=true loop=false>");
           $('#play-button').removeClass('active').fadeOut();
           $('#grid').removeClass('active');
           window.game.generateAnswers();
@@ -145,7 +173,7 @@
       if (window.game.machine.is("betting")) {
         spotted = window.game.grid[$(this).attr("number") - 1].spot === "spot" ? "" : "spot";
         $.observable(window.game.grid[$(this).attr("number") - 1]).setProperty("spot", spotted);
-        if (window.game.totalSpots() === 6) {
+        if (window.game.activePlayButton()) {
           return $('#play-button').addClass('active');
         } else {
           return $('#play-button').removeClass('active');
@@ -154,10 +182,11 @@
     });
     $('#play-button').on("click", function(event) {
       if (window.game.totalSpots() === 6) {
-        $('#sound').html("<embed src='/clients/keno/button-click.wav' hidden=true autostart=true loop=false>");
+        $('#sound').html("<embed src='snd/button_click.wav' hidden=true autostart=true loop=false>");
         return window.game.machine.play();
       }
     });
+    $('#sound').html("<embed src='snd/openingsound.wav' hidden=true autostart=true loop=false>");
     return $('#game').fadeIn(2000);
   });
 }).call(this);

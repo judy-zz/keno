@@ -2,7 +2,6 @@ Array::shuffle = -> @sort -> 0.5 - Math.random()
 
 window.game =
   fixedAnswers: ->
-   # [1, 12, 29, 41, 45, 38] 
    [1, 12, 29, 42, 57, 68];
   generateAnswers: ->
     @answers ?= window.game.fixedAnswers()
@@ -18,8 +17,13 @@ window.game =
   displayAnswer: (number) ->
     $.observable(window.game.grid[number - 1]).setProperty("answer", true)
   displayWinnerMessage: ->
-    $('#sound').html("<embed src='/clients/keno/snd/slot_payoff.wav' hidden=true autostart=true loop=false>")
+    $('#sound').html("<embed src='snd/slot_payoff.wav' hidden=true autostart=true loop=false>")
     $('#winning-screen').css('z-index', '2').delay(1000).fadeIn()
+  pickedSpots: ->
+    slot.number for slot in window.game.grid when slot.spot == "spot"
+  activePlayButton: ->
+    window.game.totalSpots() == 6 and
+    (number for number in window.game.pickedSpots() when number in window.game.fixedAnswers()).length == 6
   slotClass: (answer, spot) ->
     if answer
       if spot 
@@ -48,7 +52,7 @@ window.game =
           alert("Please select exactly 6 spots.")
           return false
       onplaying: ->
-        $('#sound').html("<embed src='/clients/keno/snd/button_click.wav' hidden=true autostart=true loop=false>")
+        $('#sound').html("<embed src='snd/button_click.wav' hidden=true autostart=true loop=false>")
         $('#play-button').removeClass('active').fadeOut()
         $('#grid').removeClass('active')
         window.game.generateAnswers()
@@ -80,7 +84,7 @@ $(document).ready ->
       if window.game.machine.is("betting")
         spotted = if window.game.grid[$(this).attr("number") - 1].spot == "spot" then "" else "spot"
         $.observable(window.game.grid[$(this).attr("number") - 1]).setProperty("spot", spotted)
-        if window.game.totalSpots() == 6
+        if window.game.activePlayButton()
           $('#play-button').addClass('active')
         else
           $('#play-button').removeClass('active')
@@ -88,8 +92,8 @@ $(document).ready ->
   $('#play-button')
     .on "click", (event) ->
       if window.game.totalSpots() == 6
-        $('#sound').html("<embed src='/clients/keno/snd/button_click.wav' hidden=true autostart=true loop=false>")
+        $('#sound').html("<embed src='snd/button_click.wav' hidden=true autostart=true loop=false>")
         window.game.machine.play()
 
-  $('#sound').html("<embed src='/clients/keno/openingsound.wav' hidden=true autostart=true loop=false>")
+  $('#sound').html("<embed src='snd/openingsound.wav' hidden=true autostart=true loop=false>")
   $('#game').fadeIn(2000)
